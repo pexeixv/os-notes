@@ -36,13 +36,13 @@ Process is waiting to be assigned to processor.
 
 Process has finished execution.
 
-![](C:\Users\pex\AppData\Roaming\marktext\images\2022-01-25-07-53-28-image.png)
+![](/images/2022-01-25-07-53-28-image.png)
 
 # Process control block
 
 Each process is represented in the OS by a PCB.
 
-![](C:\Users\pex\AppData\Roaming\marktext\images\2022-01-25-07-58-17-image.png)
+![](/images/2022-01-25-07-58-17-image.png)
 
 ## Process no
 
@@ -100,7 +100,7 @@ As processes enter the system, they are put into job queue, which consists of al
 
 The processes that are in memory and are reading and waiting to be executed.
 
-![](C:\Users\pex\AppData\Roaming\marktext\images\2022-01-25-08-32-08-image.png)
+![](/images/2022-01-25-08-32-08-image.png)
 
 # Context switch
 
@@ -198,7 +198,7 @@ There are two fundamental models of interprocess communication:
   
   + Requires more time consuming task of kernel itervention.
 
-![](C:\Users\pex\AppData\Roaming\marktext\images\2022-01-25-16-30-37-image.png)
+![](/images/2022-01-25-16-30-37-image.png)
 
 # Threads
 
@@ -220,7 +220,7 @@ There are two fundamental models of interprocess communication:
 
 + If many threads, then it can perform more than one task.
 
-![](C:\Users\pex\AppData\Roaming\marktext\images\2022-01-25-16-45-08-image.png)
+![](/images/2022-01-25-16-45-08-image.png)
 
 ## Benefits of multithreading
 
@@ -281,7 +281,7 @@ There are two fundamental models of interprocess communication:
   
   + Since only one thread can access the kernel, multiple threads are unable to run in parallel on multiprocessors.
 
-![](C:\Users\pex\AppData\Roaming\marktext\images\2022-01-25-17-02-41-image.png)
+![](/images/2022-01-25-17-02-41-image.png)
 
 ## One-to-one model
 
@@ -297,7 +297,7 @@ There are two fundamental models of interprocess communication:
   
   + The overhead of creating kernel threads can burden the perfomance of an application. 
 
-![](C:\Users\pex\AppData\Roaming\marktext\images\2022-01-25-17-05-48-image.png)
+![](/images/2022-01-25-17-05-48-image.png)
 
 ## Many-to-many model
 
@@ -309,7 +309,7 @@ There are two fundamental models of interprocess communication:
 
 + When a thread performs a blocking system call, the kernel can schedule another thread for execution.
 
-![](C:\Users\pex\AppData\Roaming\marktext\images\2022-01-25-17-09-28-image.png)
+![](/images/2022-01-25-17-09-28-image.png)
 
 # Hyperthreading (SMT)
 

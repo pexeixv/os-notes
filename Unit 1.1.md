@@ -8,7 +8,7 @@
 
 + eg. Windows, Linux, MacOS, iOS, Android
 
-![](.\images\2022-01-24-15-03-37-image.png)
+![](/images/2022-01-24-15-03-37-image.png)
 
 ## Types of OS
 
@@ -344,7 +344,7 @@ Used to be done in Assembly before, however now high level languages are also us
 
 ## Simple Structure
 
- ![](.\images\2022-01-24-22-49-23-image.png)
+ ![](/images/2022-01-24-22-49-23-image.png)
 
 + Found in early computer systems
 
@@ -356,7 +356,7 @@ Used to be done in Assembly before, however now high level languages are also us
 
 ## Monolothic Structure
 
-![](.\images\2022-01-24-22-58-05-image.png)
+![](/images/2022-01-24-22-58-05-image.png)
 
 + All functionalities are packed into kernel.
 
@@ -364,7 +364,7 @@ Used to be done in Assembly before, however now high level languages are also us
 
 ## Layered Structure
 
-![](.\images\2022-01-24-23-03-10-image.png)
+![](/images/2022-01-24-23-03-10-image.png)
 
 ### Ads
 
@@ -380,7 +380,7 @@ Used to be done in Assembly before, however now high level languages are also us
 
 ## Microkernel
 
-![](.\images\2022-01-24-23-06-41-image.png)
+![](/images/2022-01-24-23-06-41-image.png)
 
 + Only main functionalities are in kernel.
 
@@ -398,7 +398,7 @@ Used to be done in Assembly before, however now high level languages are also us
 
 ## Modules
 
-![](.\images\2022-01-24-23-11-23-image.png)
+![](/images/2022-01-24-23-11-23-image.png)
 
 + Core kernel has only core functionalities
 
