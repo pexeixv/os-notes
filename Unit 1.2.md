@@ -1,0 +1,324 @@
+# Process management
+
+## Process
+
++ A program in execution.
+
+## Thread
+
++ The unit of execution within a process.
+
+# Process state
+
++ As  a process executes, it changes state.
+
++ The state of a process is defined in part by the current activity of that process.
+
+## States
+
+### New
+
+Process is being created.
+
+### Running
+
+Instructions are being executed.
+
+### Waiting
+
+Process is waiting for some event to occur.
+
+### Ready
+
+Process is waiting to be assigned to processor.
+
+### Terminated
+
+Process has finished execution.
+
+![](C:\Users\pex\AppData\Roaming\marktext\images\2022-01-25-07-53-28-image.png)
+
+# Process control block
+
+Each process is represented in the OS by a PCB.
+
+![](C:\Users\pex\AppData\Roaming\marktext\images\2022-01-25-07-58-17-image.png)
+
+## Process no
+
+Unique ID of the process.
+
+## Process state
+
+State the process is in.
+
+## Program counter
+
+Address of the next line of instruction to be executed.
+
+## CPU Registers
+
+Particular registers being used by the process.
+
+## CPU scheduling info
+
+Determines order of execution of the process among others.
+
+## Memory management info
+
+Memory used by the process.
+
+## Accounting info
+
+Keeps track of resources used by the process.
+
+## IO status info
+
+IO devices assigned to the process.
+
+# Process scheduling
+
+## Objective of multiprogramming
+
+The objective of multiprogramming is to have some process running at all times, to maximize CPU utilization.
+
+## Objectives of  time-sharing
+
+The objective of time sharing is to switch the CPU among processes so frequently that users can interact with each program while it is running.
+
+## Process scheduler
+
+To meet these objectives, the process scheduler selects an available process for program execution.
+
+## Scheduling queue
+
+### Job queue
+
+As processes enter the system, they are put into job queue, which consists of all processes in the system.
+
+### Ready queue
+
+The processes that are in memory and are reading and waiting to be executed.
+
+![](C:\Users\pex\AppData\Roaming\marktext\images\2022-01-25-08-32-08-image.png)
+
+# Context switch
+
++ Interrupts cause the OS to change a CPU from its current task and to run a kernel routine.
+
++ Such operations happen frequently on general-purpose systems.
+
++ When an interrupt occurs, the system needs to save the current context of the process currently running on the CPU so that it can restore that context when its processing is done, essentially suspending the process and then resuming it.
+
++ The context is represented in the PCB of the process.
+
++ Switching the CPU to another process requires performing a state save of the current process and a state restore of a different process. This task is known as context switch.
+
+# Process Creation
+
++ A process may create new processes via a create-process system call.
+
++ Children processes can also create children processes, forming a tree.
+
++ When a processs creates a new process, two possibilities exitst in terms of execution:
+  
+  + The parent continues to execite concurrently with its children/
+  
+  + The parent waits until some or all of its children have terminated.
+
++ The child process may
+  
+  + Be a dubplicate of the parents process ie have the same program and data as the parent.
+  
+  + Have a new program loaded into it.
+
+# Process termination
+
++ A process terminates when it finishes executing its final statement and asks the OS to delete it using the `exit()` system call.
+
++ The process may return a status value to it parent process via `wait()` system call.
+
++ All the resources of the process are deallocated.
+
++ Termination can also occur:
+  
+  + By another process via an appropriate system call.
+  
+  + Can be only invoked by the parent of the process.
+
++ A parent may terminate child when:
+  
+  + Child has execeededit resource usage.
+  
+  + The task assigned to the child is no longer required.
+  
+  + When the parent itself is terminating.
+
+# Interprocess communication
+
++ Processes may be independent processes or cooperating processes.
+
+## Independent processes
+
++ They cannot affect or not be affected by the other prcceses.
+
+## Cooperating processes
+
++ They can be affect or be affected by the other processes.
+
++ Reasons for providing an evironment that allows process cooperating:
+  
+  + Information sharing
+  
+  + Computation speedup
+  
+  + Modularity
+  
+  + Convenience
+
+Cooperating processes require an **interprocess communication (IPC)** mechanism that will allow them to exchange data and information.
+
+There are two fundamental models of interprocess communication:
+
++ Shared memory
+  
+  + A region of memory that is shared by cooperaing processes is established.
+  
+  + Processes can then exchange information by reading and writing data to the shared region.
+  
+  + Allows maximum speed and convenience
+  
+  + System calls are needed to establish shared region
+
++ Message passing
+  
+  + Commmunication takes place by means of message exchanged between cooperating processes.
+  
+  + Implemented using system calls.
+  
+  + Requires more time consuming task of kernel itervention.
+
+![](C:\Users\pex\AppData\Roaming\marktext\images\2022-01-25-16-30-37-image.png)
+
+# Threads
+
++ Basic unit of CPU utilization.
+
++ It compises of
+  
+  + Thread ID
+  
+  + Program counter
+  
+  + Register set
+  
+  + Stack
+
++ It shares with other threads, belonging to same process its code section ,data section and other OS resources.
+
++ A traditional (heavyweight) process has a single thread of control.
+
++ If many threads, then it can perform more than one task.
+
+![](C:\Users\pex\AppData\Roaming\marktext\images\2022-01-25-16-45-08-image.png)
+
+## Benefits of multithreading
+
+1. Responsiveness
+   
+   + A program continues running even if a part of it is blocked or is performing a lenngthy operation, increasing responsiveness to the user.
+
+2. Resource sharing
+   
+   + Threads share memory and resources of the process to which they belong. 
+   
+   + They benefits of sharing code and data is that is allows an application to have several different threads of activity wintin the same address space.
+
+3. Economy
+   
+   + Allocating memory and resources for process creation is costly. 
+   
+   + Because threads share resouces of the process to which they belong, it is more economic to create and context-switch threads.
+
+4. Utilization of multiprocessor architecture
+   
+   + The benefits of multithreading can be greatly increased in a multiprocessor achitecture, where threads may be running in parallel on different processors.
+   
+   + A single-threaded process can only run on one CPU, no matter how many are available.
+   
+   + Multithreading on a multi-CPU machine increases concurrency.
+
+# Multithreading models
+
+## Types of threads
+
+1. User thread
+   
+   + Supported above the kernel and are manager without kernel support
+
+2. Kernel thread
+   
+   + Supported and managed directly by the OS
++ For the system to function, there must exist a relationship between user thread and kernel threads.
+
++ There are three common ways to establish this relation:
+  
+  1. Many-to-one model
+  
+  2. One-to-one model
+  
+  3. Many-to-many model
+
+## Many-to-one model
+
++ Maps many user thread to one kernel thread.
+
++ Thread management is done by the thread library in user space, so it is efficient.
+
++ Disads
+  
+  + The entire process will block if a thread makes a blocking system call
+  
+  + Since only one thread can access the kernel, multiple threads are unable to run in parallel on multiprocessors.
+
+![](C:\Users\pex\AppData\Roaming\marktext\images\2022-01-25-17-02-41-image.png)
+
+## One-to-one model
+
++ One user thread is mapped to one kernel thread.
+
++ Provides more concurrenct by alloweing another thread to run when a thread makes a blocking system call.
+
++ Allows multiple threads to run in parallel on multiprocessors.
+
++ Disads
+  
+  + Creating user thread requires creating corresponding kernal thread.
+  
+  + The overhead of creating kernel threads can burden the perfomance of an application. 
+
+![](C:\Users\pex\AppData\Roaming\marktext\images\2022-01-25-17-05-48-image.png)
+
+## Many-to-many model
+
++ Multiplexes many user threads to a smaller or equal kernel threads.
+
++ No of kernels threads may be specific to either particular machine or application.
+
++ Devs can create as many user threads as necessary and corresponding kernel threads can run in parallel on the multiprocessor.
+
++ When a thread performs a blocking system call, the kernel can schedule another thread for execution.
+
+![](C:\Users\pex\AppData\Roaming\marktext\images\2022-01-25-17-09-28-image.png)
+
+# Hyperthreading (SMT)
+
++ Also called simultaneous multithreading, but prioritized as hyperthreading by Intel
+
++ More than one multithreading happening in one system.
+
++ Hyperthreaded systems allow their processor cores' resources to become multiple logical processors for performance.
+
++ It enables the processor to execute two threads, or sets of instructions at the same time.
+
++ Since hyperthreading allows two streams to be executed in parallel, it is almost like having two seperate processors working together.
