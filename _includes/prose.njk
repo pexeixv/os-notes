@@ -4,18 +4,25 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{{title}}</title>
+        <title>{{ title }}</title>
         <link rel="shortcut icon" href="//gavinpereira.in/img/fav/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="/css/styles.css">
     </head>
     <body class="bg-slate-800 text-white text-2xl py-10">
-        <main class="prose prose-invert mx-auto px-5 py-10">
-            {{content | safe}}
-        </main>
-        <div class="flex justify-center gap-3">
-            &lt;
-            <a href="/" class="uppercase underline">Homepage
+        <header class="container flex items-center justify-center mx-auto">
+            <a href="//gavinpereira.in">
+                <img src="//gavinpereira.in/img/wordmark.svg" class="h-10">
             </a>
-        </div>
+        </header>
+        <main class="prose prose-invert mx-auto px-5 py-10">
+            {{ content | safe }}
+        </main>
+        {% if title != 'OS Notes' %}
+            <div class="flex justify-center gap-3">
+                &lt;
+                <a href="/" class="uppercase underline">Homepage
+                </a>
+            </div>
+        {% endif %}
     </body>
 </html>
